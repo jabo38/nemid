@@ -1,0 +1,48 @@
+{
+  "name": "nemid",
+  "version": "1.0.1",
+  "description": "A standalone client implementing NEMid.",
+  "main": "index.js",
+  "scripts": {
+    "pack": "build --dir",
+    "dist": "build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "io.nem.id",
+    "mac": {
+      "category": "finance"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhiljha/nemid.git"
+  },
+  "keywords": [
+    "nem",
+    "nemid"
+  ],
+  "author": "Nikhil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikhiljha/nemid/issues"
+  },
+  "homepage": "https://github.com/nikhiljha/nemid#readme",
+  "devDependencies": {
+    "electron": "^1.6.11",
+    "electron-builder": "^19.4.2"
+  },
+  "dependencies": {
+    "nem-sdk": "^1.2.3"
+  }
+}
