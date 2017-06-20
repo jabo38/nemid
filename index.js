@@ -28,7 +28,9 @@ function createWindow () {
   });
 
   app.on('open-url', function(event, url) {
-    mainWindow.webContents.send('sign', url);
+    if (mainWindow) {
+      mainWindow.webContents.send('sign', url);
+    }
   });
 
   app.makeSingleInstance(function(argv, wd) {
