@@ -20,7 +20,7 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 350, height: 450, title: "NEMid"});
+  mainWindow = new BrowserWindow({width: 350, height: 450, title: "NEMid", show: false });
 
   app.setAsDefaultProtocolClient("nemid");
   protocol.registerHttpProtocol("nemid", (req, cb) => {
@@ -48,6 +48,15 @@ function createWindow () {
     slashes: true
   }));
 
+  mainWindow.on("ready-to-show", function() {
+    mainWindow.show();
+    process.argv.forEach((arg) => {
+      const parsedURL = url.parse(arg);
+      if (!parsedURL.protocol || !parsedURL.slashes) return;
+      mainWindow.webContents.send('sign', arg);
+    });
+  })
+
   // For Debug
   // mainWindow.webContents.openDevTools()
 
@@ -55,6 +64,8 @@ function createWindow () {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
+
+  return mainWindow;
 }
 
 // Open the window.
