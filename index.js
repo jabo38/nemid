@@ -26,8 +26,17 @@ function createWindow () {
   protocol.registerHttpProtocol("nemid", (req, cb) => {
     mainWindow.webContents.send('sign', req);
   });
+
   app.on('open-url', function(event, url) {
     mainWindow.webContents.send('sign', url);
+  });
+
+  app.makeSingleInstance(function(argv, wd) {
+    argv.forEach((arg) => {
+      const parsedURL = url.parse(arg);
+      if (!parsedURL.protocol || !parsedURL.slashes) return;
+      mainWindow.webContents.send('sign', arg);
+    });
   });
 
   // Load the identification page.

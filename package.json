@@ -1,11 +1,13 @@
 {
   "name": "nemid",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "A standalone client implementing NEMid.",
   "main": "index.js",
   "scripts": {
     "pack": "build --dir",
     "dist": "build",
+    "dist:win": "build --win --x64",
+    "dist:lin": "build --linux --x64",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
@@ -15,12 +17,11 @@
     },
     "linux": {
       "target": [
-        "AppImage",
         "deb"
       ]
     },
     "win": {
-      "target": "squirrel",
+      "target": "nsis",
       "icon": "build/icon.ico"
     }
   },
@@ -32,7 +33,7 @@
     "nem",
     "nemid"
   ],
-  "author": "Nikhil",
+  "author": "Nikhil <x@fwn.io>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nikhiljha/nemid/issues"
@@ -40,7 +41,8 @@
   "homepage": "https://github.com/nikhiljha/nemid#readme",
   "devDependencies": {
     "electron": "^1.6.11",
-    "electron-builder": "^19.4.2"
+    "electron-builder": "^19.4.2",
+    "electron-builder-squirrel-windows": "^19.5.1"
   },
   "dependencies": {
     "nem-sdk": "^1.2.3"

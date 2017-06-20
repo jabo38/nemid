@@ -122,8 +122,10 @@
         }
     </style>
     <script>
+        // Prevent the page from loading on submit.
         var form = document.getElementById("nemform"); function handleForm(event) { event.preventDefault(); } form.addEventListener('submit', handleForm);
 
+        // Add ipc and shell access.
         const {ipcRenderer, shell} = require('electron');
         const nem = require("nem-sdk").default;
 
