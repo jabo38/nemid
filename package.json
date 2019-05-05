@@ -40,9 +40,9 @@
   },
   "homepage": "https://github.com/nikhiljha/nemid#readme",
   "devDependencies": {
-    "electron": "^1.6.11",
-    "electron-builder": "^19.4.2",
-    "electron-builder-squirrel-windows": "^19.5.1"
+    "electron": "^5.0.1",
+    "electron-builder": "^20.39.0",
+    "electron-builder-squirrel-windows": "^20.40.0"
   },
   "dependencies": {
     "nem-sdk": "^1.2.3"
